@@ -14,7 +14,7 @@ const Logo = ({
 }) => (
   <SlotColumnView slot={gap} hAlign="center" padding={[30, 0, 30, 0]}>
     <Icon name={logo} size={logoSize} color={logoColor} />
-    <Text color={brandColor} style={{ fontWeight: 'bold', fontSize: `${brandSize}px` }}>
+    <Text color={brandColor} size={brandSize} weight="bold">
       {brand}
     </Text>
   </SlotColumnView>

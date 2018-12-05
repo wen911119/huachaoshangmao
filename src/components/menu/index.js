@@ -92,6 +92,9 @@ export default class Menu extends Component {
   onSelect = index => {
     this.toggelMenu()
     this.props.onSelect && this.props.onSelect(index)
+    document
+      .getElementById(this.props.titles[index])
+      .scrollIntoView({ behavior: 'smooth', block: 'start' })
   }
   render ({ titles, activeIndex = 0 }, { open }) {
     if (containerWidth < 768) {
