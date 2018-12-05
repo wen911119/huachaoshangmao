@@ -5,7 +5,6 @@ import { setIconFontUrl } from '@ruiyun/preact-icon'
 
 // Code-splitting is automated for routes
 import Home from './routes/home'
-import Profile from './routes/profile'
 
 setIconFontUrl('//at.alicdn.com/t/font_946314_h3rg2sxjq3.css')
 
@@ -24,8 +23,6 @@ export default class App extends Component {
       <div id="app">
         <Router onChange={this.handleRoute}>
           <Home path="/" />
-          <Profile path="/profile/" user="me" />
-          <Profile path="/profile/:user" />
         </Router>
       </div>
     )

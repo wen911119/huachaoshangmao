@@ -1,5 +1,5 @@
 import { h } from 'preact'
-import Icon from '../icon'
+import Icon from '@ruiyun/preact-icon'
 import { SlotColumnView } from '@ruiyun/preact-layout-suite'
 import Text from '@ruiyun/preact-text'
 
