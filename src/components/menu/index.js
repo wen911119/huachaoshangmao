@@ -35,7 +35,7 @@ const lineStyleClose = {
 }
 
 // eslint-disable-next-line
-const renderTopModalContent = titles => () => (
+const renderTopModalContent = (titles, activeIndex, onSelect) => () => (
   <SlotColumnView
     width="100vw"
     bgColor="#fff"
@@ -43,11 +43,18 @@ const renderTopModalContent = titles => () => (
     slot={<Line />}
   >
     {titles.map((t, i) => (
-      <RowView key={i} height={94} padding={[0, 0, 0, 48]}>
-        <Text color="#666" size={32}>
-          {t}
-        </Text>
-      </RowView>
+      // eslint-disable-next-line
+      <TouchableInline key={i} onPress={onSelect.bind(this, i)}>
+        <RowView height={94} padding={[0, 0, 0, 48]}>
+          <Text
+            color="#666"
+            size={32}
+            style={{ fontWeight: activeIndex === i ? 700 : 300 }}
+          >
+            {t}
+          </Text>
+        </RowView>
+      </TouchableInline>
     ))}
   </SlotColumnView>
 )
@@ -68,13 +75,23 @@ export default class Menu extends Component {
         },
         () => {
           this.props.$modal.show({
-            content: renderTopModalContent(this.props.titles),
+            content: renderTopModalContent(
+              this.props.titles,
+              this.props.activeIndex,
+              this.onSelect
+            ),
             mask: 0.1,
-            position: 'top'
+            position: 'top',
+            onMaskClick: this.toggelMenu,
+            autoClose: false
           })
         }
       )
     }
+  }
+  onSelect = index => {
+    this.toggelMenu()
+    this.props.onSelect && this.props.onSelect(index)
   }
   render ({ titles, activeIndex = 0 }, { open }) {
     if (containerWidth < 768) {

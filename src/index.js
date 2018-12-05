@@ -1,11 +1,13 @@
 import './style'
 import { h, Component } from 'preact'
 import { Router } from 'preact-router'
-
+import { setIconFontUrl } from '@ruiyun/preact-icon'
 
 // Code-splitting is automated for routes
 import Home from './routes/home'
 import Profile from './routes/profile'
+
+setIconFontUrl('//at.alicdn.com/t/font_946314_h3rg2sxjq3.css')
 
 export default class App extends Component {
 
