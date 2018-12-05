@@ -5,14 +5,15 @@ import Line from '@ruiyun/preact-line'
 const style1 = {
   backgroundPosition: '50% 50%',
   backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  backgroundColor: 'transparent'
+  backgroundSize: 'cover'
 }
 const Block = ({ title, bgColor, bgImage, titleColor, children }) => (
   <ColumnView
     padding={[40, 0, 60, 0]}
-    bgColor={bgColor}
-    style={Object.assign(style1, { backgroundImage: `url("${bgImage}")` })}
+    style={Object.assign(style1, {
+      backgroundImage: `url("${bgImage}")`,
+      backgroundColor: bgColor || 'transparent'
+    })}
   >
     <RowView height={136} hAlign="center">
       <Text size={48} color={titleColor}>
